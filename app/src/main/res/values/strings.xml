@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">简易行</string>
+    <array name="location">
+        <item>北京</item>
+        <item>上海</item>
+        <item>南京</item>
+        <item>深圳</item>
+        <item>广州</item>
+        <item>杭州</item>
+    </array>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/textview_style2">
+
+        <ImageView
+            android:id="@+id/imageview"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/img_1" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/imageview"
+            android:gravity="center"
+            android:textColor="@color/deep_gray"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/publishtime"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/username"
+            android:layout_toRightOf="@+id/imageview"
+            android:gravity="center"
+            android:textColor="@color/gray_400"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sharedtext"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/imageview"
+            android:layout_centerInParent="true"
+            android:background="@drawable/vip_style"
+            android:ems="10"
+            android:hint="评价"
+            android:inputType="textPersonName"
+            android:textColor="@color/gray_800"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/btn_love"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/sharedtext"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/index_love"
+            android:clickable="true"
+            android:onClick="click"
+            android:scaleType="fitXY"
+            android:text="点赞" />
+
+        <!--        android:background="@drawable/button_select"-->
+
+
+        <TextView
+            android:id="@+id/lovenumber"
+            android:layout_width="39dp"
+            android:layout_height="26dp"
+            android:layout_below="@+id/sharedtext"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="0dp"
+            android:layout_toLeftOf="@+id/btn_love"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

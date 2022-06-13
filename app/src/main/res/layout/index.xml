@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--RadioGroup + ViewPager 实现 Android底部导航栏-->
+
+    <!--ViewPager-->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rg_tab"
+        android:layout_weight="1" />
+
+    <!--底部导航栏-->
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="2dp">
+
+        <RadioButton
+            android:id="@+id/rb_routing"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/routing_drawable"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="规划"
+            android:textColor="#120F0F" />
+
+        <RadioButton
+            android:id="@+id/rb_recommend"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/recommend_drawable"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="推荐"
+            android:textColor="#120F0F" />
+
+        <RadioButton
+            android:id="@+id/rb_dynamic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/dynamic_drawable"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="动态"
+            android:textColor="#120F0F" />
+
+        <RadioButton
+            android:id="@+id/rb_me"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/me_drawable"
+            android:gravity="center"
+            android:paddingLeft="0dp"
+            android:text="我"
+            android:textColor="#120F0F" />
+    </RadioGroup>
+
+</LinearLayout>

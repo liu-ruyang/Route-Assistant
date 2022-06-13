@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/part_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <!--背景地图-->
+
+    <Button
+        android:id="@+id/btn_show_route"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/up_list" />
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+    </com.amap.api.maps.MapView>
+
+    <!--低级搜索窗口-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/primary_search_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#36656363"
+        android:paddingBottom="10dp"
+        android:visibility="visible">
+
+        <!--输入起点-->
+
+        <EditText
+            android:id="@+id/starting_point"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            android:hint="起点"
+            android:inputType="text"
+            android:paddingLeft="30dp"
+            android:paddingRight="15dp"
+            android:textColor="#120F0F"
+            android:textColorHint="@color/deep_gray"
+            android:textSize="16sp"
+            android:theme="@style/line_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--输入提示框-->
+
+        <!--输入终点-->
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="24dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="6dp"
+            app:layout_constraintStart_toStartOf="@+id/starting_point"
+            app:layout_constraintTop_toTopOf="@+id/starting_point"
+            app:srcCompat="@drawable/flag" />
+
+        <EditText
+            android:id="@+id/end_point"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="80dp"
+            android:hint="终点"
+            android:inputType="text"
+            android:paddingLeft="30dp"
+            android:paddingRight="15dp"
+            android:textColor="#120F0F"
+            android:textColorHint="@color/deep_gray"
+            android:textSize="16sp"
+            android:theme="@style/line_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="24dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="6dp"
+            app:layout_constraintStart_toStartOf="@+id/end_point"
+            app:layout_constraintTop_toTopOf="@+id/end_point"
+            app:srcCompat="@drawable/flag" />
+
+        <RadioGroup
+            android:id="@+id/radio_strategy_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/end_point"
+            app:layout_constraintTop_toBottomOf="@id/end_point">
+
+            <RadioButton
+                android:id="@+id/radio_shortestTime_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="耗时最少"
+                android:textColor="#120F0F" />
+
+            <RadioButton
+                android:id="@+id/radio_shortestDistance_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:checked="false"
+                android:text="路程最短"
+                android:textColor="#120F0F" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/end_point"
+            app:layout_constraintTop_toBottomOf="@+id/end_point">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="多点规划"
+                android:textColor="#86120F0F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_advanced_open"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/arrow"
+                tools:ignore="TouchTargetSizeCheck"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/radio_strategy_primary">
+
+            <Button
+                android:id="@+id/btn_clear_all_routes_planed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stateListAnimator="@null"
+                android:text="清空路线" />
+
+            <Button
+                android:id="@+id/btn_primary_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:stateListAnimator="@null"
+                android:text="开始规划" />
+        </LinearLayout>
+
+        <!--输入提示框-->
+        <!--关于控件的宽度和高度的各个属性的优先级讲解：
+        ①若android:layout_width设置了 具体的值、match_parent、或者wrap_content 时，则会优先使用这些
+        ②若android:layout_width没有上面的值，而是设置了 0dp ，
+         此时如果还设置了 layout_constraintRight_toRightOf 这些类似的属性值的时候，则会根据这些属性值来确定具体的宽、高效果-->
+        <include
+            android:id="@+id/starting_point_tips_list"
+            layout="@layout/tips_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/test"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@id/starting_point"
+            app:layout_constraintRight_toRightOf="@id/starting_point"
+            app:layout_constraintTop_toBottomOf="@+id/starting_point" />
+
+        <!--输入提示框-->
+        <include
+            android:id="@+id/end_point_tips_list"
+            layout="@layout/tips_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/test"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@+id/end_point"
+            app:layout_constraintRight_toRightOf="@+id/end_point"
+            app:layout_constraintTop_toBottomOf="@+id/end_point" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_test_locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="500dp"
+        android:text="定位功能测试"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_test_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="500dp"
+        android:text="导航功能测试"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_test_poi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="500dp"
+        android:text="获取POI测试"
+        android:visibility="invisible" />
+
+    <!--高级搜索窗口-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间"
+            android:textColor="#120F0F" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:text="路程"
+            android:textColor="#120F0F" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/advanced_dialog"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/route_box_style"
+        android:visibility="invisible">
+        <!--自定义可换行控件-->
+        <!--        android:id="@+id/ll_one"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <RadioGroup
+            android:id="@+id/radio_strategy_advanced"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/new_place">
+
+            <RadioButton
+                android:id="@+id/radio_shortestTime_advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="耗时最少"
+                android:textColor="#120F0F" />
+
+            <RadioButton
+                android:id="@+id/radio_shortestDistance_advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="路程最短"
+                android:textColor="#120F0F" />
+        </RadioGroup>
+
+        <com.example.perfectnavigationassistant.myview.HorizantalAutoBrLayout
+            android:id="@+id/display_places"
+            android:layout_width="240dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/place_box_style"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_place">
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="地点①" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="地点②" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="地点③" />-->
+        </com.example.perfectnavigationassistant.myview.HorizantalAutoBrLayout>
+
+        <!--
+            android:stateListAnimator="@null"
+            去掉阴影效果而使Button可以被正常的覆盖
+        -->
+        <Button
+            android:id="@+id/btn_add_place"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="5dp"
+            android:stateListAnimator="@null"
+            android:text="添加"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radio_strategy_advanced"></Button>
+
+        <!--
+            android:stateListAnimator="@null"
+            去掉阴影效果而使Button可以被正常的覆盖
+        -->
+        <Button
+            android:id="@+id/btn_clear_allPlaces"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:stateListAnimator="@null"
+            android:text="清空"
+            app:layout_constraintStart_toEndOf="@+id/btn_add_place"
+            app:layout_constraintTop_toTopOf="@id/btn_add_place" />
+
+        <EditText
+            android:id="@+id/new_place"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="28dp"
+            android:hint="途径…（首个为起点）"
+            android:inputType="text"
+            android:paddingLeft="30dp"
+            android:paddingRight="15dp"
+            android:textColor="#120F0F"
+            android:textColorHint="@color/deep_gray"
+            android:textSize="16sp"
+            android:theme="@style/line_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="24dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            app:layout_constraintStart_toStartOf="@+id/new_place"
+            app:layout_constraintTop_toTopOf="@+id/new_place"
+            app:srcCompat="@drawable/edit" />
+
+        <!--
+            android:stateListAnimator="@null"
+            去掉阴影效果而使Button可以被正常的覆盖
+        -->
+        <Button
+            android:id="@+id/btn_back_to_before"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:stateListAnimator="@null"
+            android:text="取消"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/display_places" />
+
+        <!--
+            android:stateListAnimator="@null"
+            去掉阴影效果而使Button可以被正常的覆盖
+        -->
+        <Button
+            android:id="@+id/btn_advanced_ok"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="100dp"
+            android:stateListAnimator="@null"
+            android:text="确认"
+            app:layout_constraintStart_toEndOf="@+id/btn_back_to_before"
+            app:layout_constraintTop_toTopOf="@+id/btn_back_to_before" />
+
+        <!--输入提示框-->
+        <include
+            android:id="@+id/new_place_tips_list"
+            layout="@layout/tips_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/test"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="@+id/new_place"
+            app:layout_constraintRight_toRightOf="@+id/new_place"
+            app:layout_constraintTop_toBottomOf="@id/new_place" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
